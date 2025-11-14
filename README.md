@@ -334,4 +334,4 @@ URL: https://github.com/mtmmu88/MiraMR
 
 ---
 
-*Made with ❤️ for Mira and the research community*
+*For Mira, with gratitude to Candice, and for the scientific community* ❤️
