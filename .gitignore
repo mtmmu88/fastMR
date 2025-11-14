@@ -1,0 +1,43 @@
+# R files
+.Rhistory
+.RData
+.Rproj.user
+*.Rproj
+
+# Package build
+*.tar.gz
+*.zip
+
+# Documentation
+/Meta/
+/doc/
+
+# Testing
+/tests/testthat/Rplots.pdf
+
+# Temporary files
+*~
+*.swp
+*.swo
+.DS_Store
+
+# Output directories (user generated)
+MR结果/
+results/
+output/
+
+# LDSC reference data (too large for Git)
+# Users should download these separately
+w_hm3.snplist
+w_hm3.snplist.bz2
+eur_w_ld_chr/
+eas_ldscores/
+afr_ldscores/
+*_w_ld_chr/
+*.l2.ldscore.gz
+*.l2.M
+*.l2.M_5_50
+ldsc_data/
+*.sumstats
+*.sumstats.gz
+*_ldsc.log
