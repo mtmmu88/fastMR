@@ -1,5 +1,4 @@
 #' @title 基于暴露本地,结局是在线数据的标准多变量孟德尔随机化
-#' @param keyssh 密钥
 #' @param exposure_dat_iv 输入合并的暴露工具变量文件
 #' @param outgwas 数据结局的GWAS summary数据
 #' @param ivw_MVMR 是否进行IVW方法估计
@@ -7,13 +6,9 @@
 #' @param egger_MVMR 是否进行egger方法估计
 #' @param median_MVMR 是否进行median方法估计
 #' @export
-stand_MVMR_local_local<-function(keyssh,exposure_dat_iv,outgwas,
+stand_MVMR_local_local<-function(exposure_dat_iv,outgwas,
                                ivw_MVMR=T,lasso_MVMR=F,egger_MVMR=F,median_MVMR=F){
   library(tidyr)
-  RegistID_dat <- RegistID_dat
-  RegistID_u <- subset(RegistID_dat, IK == keyssh)
-  tempid <- paste0(keyssh, "_", Sys.info()["nodename"], "_",RegistID_u$RegistID)
-  if (RegistID_u$FINN %in% tempid) {
     exposure_dat <- exposure_dat_iv
     #获取结局数据
     outcome_dat <- merge(exposure_dat,outgwas,by="SNP",all=F)
@@ -52,6 +47,4 @@ stand_MVMR_local_local<-function(keyssh,exposure_dat_iv,outgwas,
       mv_median<-mr_mvmedian(MRMVInput)
       #查看加权法结果
       return(mv_median)}
-  }else{
-    cat("请联系管理员获取账户学号和密码或微信联系SFM19950928或DKYXS666")}
 }

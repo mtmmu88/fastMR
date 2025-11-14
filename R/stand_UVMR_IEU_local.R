@@ -1,5 +1,4 @@
 #' @title 适用暴露来自IEU结局来自本地数据的标准单变量孟德尔随机化分析
-#' @param keyssh 密钥
 #' @param GWASID 输入暴露的GWAS ID号
 #' @param outgwas 输入结局的GWAS摘要数据
 #' @param samplesize_exposure 输入暴露数据的样本量，默认100000
@@ -17,14 +16,10 @@
 #' @param pt 是否进行绘图，默认是TURE
 #' @export
 
-stand_UVMR_IEU_local<-function(keyssh,GWASID,outgwas,samplesize_exposure=100000,name_exposure="exposure",
+stand_UVMR_IEU_local<-function(GWASID,outgwas,samplesize_exposure=100000,name_exposure="exposure",
                                  local_clump=F,confounding_SNP=NULL,clump_p1=5e-08,clump_r2=0.001,clump_kb=10000,pop="EUR",outfile="MR结果",presso=F,
                                  steiger=T,Fvalue=T,pt=T){
     library(tidyr)
-  RegistID_dat <- RegistID_dat
-  RegistID_u <- subset(RegistID_dat, IK == keyssh)
-  tempid <- paste0(keyssh, "_", Sys.info()["nodename"], "_",RegistID_u$RegistID)
-  if (RegistID_u$FINN %in% tempid) {
   dir.create(outfile)
   EXP<-extract_instruments(outcomes = GWASID, p1 = clump_p1,clump = T,r2=clump_r2,kb=clump_kb, p2 = 5e-08)
   EXP$id.exposure<-name_exposure
@@ -233,6 +228,4 @@ stand_UVMR_IEU_local<-function(keyssh,GWASID,outgwas,samplesize_exposure=100000,
       }else{cat("由于结局数据未匹配SNP的原因，未找到工具变量")}
     }else{cat("由于F值的原因，未找到工具变量，请将参数Fvalue发设置为F")}
   }else{cat("当前阈值可能严格，未找到工具变量，请尝试降低筛选条件")}
-  warning("此R包由作者邵明个人编制供MR爱好者免费使用，请关注抖音号793742981（医小研）")
-}else{warning("keyssh不正确,请联系管理员微信SFM19950928或DKYXS666获取密钥")}
 }

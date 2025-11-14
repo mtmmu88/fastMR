@@ -1,16 +1,10 @@
 #' @title 用于两表型的多效性位点分析
-#' @param keyssh 学号
 #' @param exp_gwas 暴露的GWAS summary数据,包含必要的四列:SNP，beta.exposure,se.exposure,pval.exposure
 #' @param out_gwas 结局的GWAS summary数据，包含必要的四列:SNP，beta.outcome,se.outcome,pval.outcome
 #' @param p.threshold 过滤P值，默认5e-08
 #' @param save_file 输出保存的文件
 #' @export
-PLACO_triat<-function(keyssh,exp_gwas,out_gwas,p.threshold=5e-08,save_file="PLACO"){
-  RegistID_dat <- RegistID_dat
-  RegistID_u <- subset(RegistID_dat, IK == keyssh)
-  tempid <- paste0(keyssh, "_", Sys.info()["nodename"], "_",
-                   RegistID_u$RegistID)
-  if (RegistID_u$FINN %in% tempid) {
+PLACO_triat<-function(exp_gwas,out_gwas,p.threshold=5e-08,save_file="PLACO"){
   ############################################
   #---------------- Function for normal product based tail probability calculation
   # (Using modified Bessel function of the 2nd kind with order 0)
@@ -101,8 +95,5 @@ message("完成配置，正在进行PLACO分析，耗时较长....")
   out1$SNP<-rownames(Z.matrix)
   out1$FDR_placo<-p.adjust(out1$p.placo)
   write.table(out1,paste0(getwd(),"/",save_file,"PLACO.txt"),row.names = F)
-  }
-else {
-  warning("keyssh不正确,请联系管理员微信SFM19950928或DKYXS666获取密钥")}
 }
 

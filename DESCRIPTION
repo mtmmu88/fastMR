@@ -1,11 +1,14 @@
-Package: fastMR
-Title: What the Package Does (One Line, Title Case)
-Version: 0.24.07.09
-Authors@R: 
-    person("Ming", "Shao", , "shaoming0928@example.com", role = c("aut", "cre"))
-Description: A brief description of your package.
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Package: MiraMR
+Title: Mira Mendelian Randomization Toolkit for Academic Research
+Version: 1.0.0
+Authors@R:
+    person("Mira", "Developer", , "mtmmu88@gmail.com", role = c("aut", "cre"))
+Description: A comprehensive Mendelian Randomization analysis toolkit designed
+    for academic research and educational purposes. Provides tools for univariate
+    and multivariate MR analysis, SMR, omics data integration (inflammatory factors,
+    immune cells, metabolomics, gut microbiome), and various preprocessing utilities.
+    For academic use only - not for unauthorized commercial purposes.
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Imports:

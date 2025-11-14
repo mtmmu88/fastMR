@@ -1,5 +1,4 @@
 #' @title 适用暴露来自本地数据结局来自IEU的标准单变量孟德尔随机化分析
-#' @param keyssh 密钥
 #' @param expgwas 输入暴露的GWAS摘要数据
 #' @param GWASID 输入结局的GWAS ID号
 #' @param samplesize_outcome 输入结局数据的样本量，默认100000
@@ -17,15 +16,11 @@
 #' @param presso 是否进行MRPRESSO，默认是FALSE
 #' @export
 
-stand_UVMR_local_IEU<-function(keyssh,expgwas,GWASID,samplesize_outcome=100000,name_outcome="outcome",
+stand_UVMR_local_IEU<-function(expgwas,GWASID,samplesize_outcome=100000,name_outcome="outcome",
                                  local_clump=F,confounding_SNP=NULL,clump_p1=5e-08,clump_r2=0.001,clump_kb=10000,pop="EUR",outfile="MR结果",presso=F,
                                  steiger=T,Fvalue=T,pt=T){
 
    library(tidyr)
-  RegistID_dat <- RegistID_dat
-  RegistID_u <- subset(RegistID_dat, IK == keyssh)
-  tempid <- paste0(keyssh, "_", Sys.info()["nodename"], "_",RegistID_u$RegistID)
-  if (RegistID_u$FINN %in% tempid) {
   dir.create(outfile)
   EXP<-expgwas[,c("SNP",
                   "effect_allele.exposure",
@@ -240,9 +235,4 @@ stand_UVMR_local_IEU<-function(keyssh,expgwas,GWASID,samplesize_outcome=100000,n
 
   }
   else{cat("当前阈值可能严格，未找到工具变量")}
-  warning("此R包由作者邵明编制，请关注抖音号793742981或者顶刊研习社公众号")
-  }
-  else {
-    warning("keyssh不正确,请联系管理员微信SFM19950928或DKYXS666获取密钥")
-  }
 }

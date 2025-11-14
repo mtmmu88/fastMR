@@ -1,5 +1,4 @@
 #' @title 适用暴露结局均来自本地数据的标准单变量孟德尔随机化分析
-#' @param keyssh 密钥
 #' @param expgwas 输入暴露的GWAS摘要数据
 #' @param outgwas 输入结局的GWAS摘要数据
 #' @param clump_p1 输入工具变量的选择P值,默认5e-08
@@ -15,15 +14,11 @@
 #' @param pt 是否进行绘图，默认是TURE
 #' @export
 
-stand_UVMR_local_local<-function(keyssh,expgwas,outgwas,
+stand_UVMR_local_local<-function(expgwas,outgwas,
                                  local_clump=F,confounding_SNP=NULL,clump_p1=5e-08,clump_r2=0.001,clump_kb=10000,pop="EUR",outfile="MR结果",presso=F,
                                  steiger=T,Fvalue=T,pt=T){
   library(tidyr)
-  RegistID_dat <- RegistID_dat
-  RegistID_u <- subset(RegistID_dat, IK == keyssh)
-  tempid <- paste0(keyssh, "_", Sys.info()["nodename"], "_",RegistID_u$RegistID)
-  if (RegistID_u$FINN %in% tempid) {
-    dir.create(outfile)
+  dir.create(outfile)
   EXP<-expgwas[,c("SNP",
                   "effect_allele.exposure",
                   "other_allele.exposure",
@@ -234,13 +229,8 @@ stand_UVMR_local_local<-function(keyssh,expgwas,outgwas,
                                 Pvalue=mrpresso_data[["MR-PRESSO results"]][["Global Test"]][["Pvalue"]])
         pathpre2<-paste0(getwd(),"/",outfile,"/RSSobs.csv")
         write.csv(res_mrpresso, pathpre2, row.names = F)}
-      
+
     }else{cat("当前阈值可能严格，未找到工具变量")}
   }
   else{cat("当前阈值可能严格，未找到工具变量")}
-  warning("此R包由作者邵明编制，请关注抖音号793742981（医小研）或者顶刊研习社公众号")
-  }
-  else {
-    warning("keyssh不正确,请联系管理员微信SFM19950928或DKYXS666获取密钥")
-  }
 }

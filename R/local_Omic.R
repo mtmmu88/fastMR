@@ -1,5 +1,4 @@
 #' @title 组学孟德尔随机化
-#' @param keyssh 密钥
 #' @param fac_cell_met_gut 选择运行那种组学,1,2,3,4代表炎症因子,免疫细胞,代谢
 #' @param savefile 结果输出保存的文件夹
 #' @param omicfile 输入组学数据存放的文件夹
@@ -11,15 +10,10 @@
 #' @param presso 是否启动MRPRESSO,默认F
 #' @param pop 输入工具变量的选择的人群,默认EUR
 #' @export
-local_Omic<-function(keyssh,fac_cell_met_gut=1,savefile="MR结果",omicfile,finish_exp,local_clump=F,clump_p1=1e-05,clump_r2=0.001,clump_kb=10000,pop="EUR",presso=F){
+local_Omic<-function(fac_cell_met_gut=1,savefile="MR结果",omicfile,finish_exp,local_clump=F,clump_p1=1e-05,clump_r2=0.001,clump_kb=10000,pop="EUR",presso=F){
 
   if(presso==F){
     library(tidyr)
-    RegistID_dat <- RegistID_dat
-    RegistID_u <- subset(RegistID_dat, IK == keyssh)
-    tempid <- paste0(keyssh, "_", Sys.info()["nodename"], "_",
-                     RegistID_u$RegistID)
-if (RegistID_u$FINN %in% tempid) {
   dir.create(savefile)
   A_temp <- c()#
   B_temp <- c()#
@@ -237,7 +231,7 @@ if(class(expiv$eaf.exposure[1])!="logical"){
       pv<-round((row_numbers /N)*100,3)
       cat("已完成",pv,"%")
     }
-}else {stop("请更换更大的clump_p1")}}else{warning("keyssh不正确,请联系管理员微信SFM19950928或DKYXS666获取密钥")}
+}else {stop("请更换更大的clump_p1")}
 } else{
     library(MRPRESSO)
     #多效性偏差

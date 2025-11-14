@@ -5,16 +5,11 @@
 #' @param data2IV 来自非IEU暴露2工具变量文件
 #' @param data2GWAS 来自非IEU暴露2的GWAS summary数据文件
 #' @param data3IV 来自非IEU暴露3工具变量文件
-#' @param keyssh 密钥
 #' @param data3GWAS 来自非IEU暴露3的GWAS summary数据文件
 #' @export
 
-IEU_1_to_local_2<-function(keyssh,data1IV,GWASID,data2IV,data2GWAS,data3IV,data3GWAS){
+IEU_1_to_local_2<-function(data1IV,GWASID,data2IV,data2GWAS,data3IV,data3GWAS){
   library(tidyr)
-  RegistID_dat <- RegistID_dat
-  RegistID_u <- subset(RegistID_dat, IK == keyssh)
-  tempid <- paste0(keyssh, "_", Sys.info()["nodename"], "_",RegistID_u$RegistID)
-  if (RegistID_u$FINN %in% tempid) {
   #假设data1IV的暴露来自IEU data2IV和data2IV的暴露来自非IEU
   exp_name<-c("SNP","effect_allele.exposure","other_allele.exposure", "eaf.exposure", "beta.exposure","se.exposure", "pval.exposure","id.exposure","exposure")
   out_name<-c("SNP","effect_allele.outcome","other_allele.outcome", "eaf.outcome", "beta.outcome","se.outcome","pval.outcome","id.outcome","outcome")
@@ -57,6 +52,4 @@ IEU_1_to_local_2<-function(keyssh,data1IV,GWASID,data2IV,data2GWAS,data3IV,data3
   #write.csv(exposure_dat_temp,"exposure_dat.csv",quote = F,row.names = F)
   #cat("已完成多变量暴露工具变量合并，请前往文件夹下exposure_dat.csv文件中进行人工筛选")
   message("已完成多变量暴露工具变量合并")
-  }else{
-    cat("请联系管理员获取账户学号和密码或微信联系SFM19950928或DKYXS666")}
-  }
+}

@@ -1,5 +1,4 @@
 #' @title 基于暴露于结局来自在线数据的标准多变量孟德尔随机化
-#' @param keyssh 密钥
 #' @param exp_GWASID_list 输入一揽子暴露GWAS ID号
 #' @param out_GWASID 输入解决的GWAS ID号
 #' @param clump_r2 输入工具变量的选择的r2,默认0.001
@@ -12,15 +11,11 @@
 #' @param egger_MVMR 是否进行egger方法估计
 #' @param median_MVMR 是否进行median方法估计
 #' @export
-stand_MVMR_IEU_IEU<-function(keyssh,exp_GWASID_list=NULL,out_GWASID=NULL,clump_r2 = 0.001,clump_kb = 10000,
+stand_MVMR_IEU_IEU<-function(exp_GWASID_list=NULL,out_GWASID=NULL,clump_r2 = 0.001,clump_kb = 10000,
                              find_proxies = TRUE,pval_threshold = 5e-08,pop = "EUR",
                              ivw_MVMR=T,lasso_MVMR=F,egger_MVMR=F,median_MVMR=F){
 
   library(tidyr)
-  RegistID_dat <- RegistID_dat
-  RegistID_u <- subset(RegistID_dat, IK == keyssh)
-  tempid <- paste0(keyssh, "_", Sys.info()["nodename"], "_",RegistID_u$RegistID)
-  if (RegistID_u$FINN %in% tempid) {
 exposure_dat <- mv_extract_exposures(id_exposure=exp_GWASID_list,clump_r2 = clump_r2,
                                      clump_kb = clump_kb,
                                      find_proxies = TRUE,force_server = FALSE, pval_threshold = pval_threshold, pop = pop)
@@ -59,6 +54,4 @@ if(median_MVMR==T){
 mv_median<-mr_mvmedian(MRMVInput)
 #查看加权法结果
 return(mv_median)}
-}else{
-  cat("请联系管理员获取账户学号和密码或微信联系SFM19950928或DKYXS666")}
 }

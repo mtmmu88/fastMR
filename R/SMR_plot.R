@@ -1,5 +1,4 @@
 #' @title 适用qtl与表型的SMR分析可视化
-#' @param keyssh 学号
 #' @param pop 参考人种，默认EUR
 #' @param maGWASfile 输入表型gwas数据
 #' @param eqtlfile 输入qtl数据
@@ -12,7 +11,7 @@
 #' @param EffectPlot SMR散点图
 #' @export
 #SMR可视化
-SMR_plot<-function(keyssh,pop="EUR",maGWASfile,eqtlfile,ILMN_outfile,ILMN_ID,smr_thresh,trait_name,num,LocusPlot=F,EffectPlot=T){
+SMR_plot<-function(pop="EUR",maGWASfile,eqtlfile,ILMN_outfile,ILMN_ID,smr_thresh,trait_name,num,LocusPlot=F,EffectPlot=T){
   is.installed <- function(mypkg){
     is.element(mypkg, installed.packages()[,1])
   }
@@ -21,11 +20,6 @@ SMR_plot<-function(keyssh,pop="EUR",maGWASfile,eqtlfile,ILMN_outfile,ILMN_ID,smr
     install.packages("TeachingDemos");
   }
   library("TeachingDemos")
-  RegistID_dat <- RegistID_dat
-  RegistID_u <- subset(RegistID_dat, IK == keyssh)
-  tempid <- paste0(keyssh, "_", Sys.info()["nodename"], "_",
-                   RegistID_u$RegistID)
-  if (RegistID_u$FINN %in% tempid) {
     if(Sys.info()["sysname"] == "Windows"){
       shell1<-paste0(getwd(),"/SMR/smr_Win/","smr-1.3.1-win.exe --bfile ",getwd(),"/1kg.v3/",pop," --gwas-summary ",maGWASfile," --beqtl-summary ",eqtlfile," --out ",ILMN_outfile," --plot --probe ",ILMN_ID," --probe-wind 500 ","--gene-list ",getwd(),"/SMR/glist-hg19"," --thread-num ",num," --diff-freq-prop 0.99")
       system(shell1)}
@@ -38,9 +32,6 @@ SMR_plot<-function(keyssh,pop="EUR",maGWASfile,eqtlfile,ILMN_outfile,ILMN_ID,smr
       SMRLocusPlot(data=SMRData, smr_thresh=smr_thresh, heidi_thresh=0.05, plotWindow=1000, max_anno_probe=16)}
     if(EffectPlot==T){
       SMREffectPlot(data=SMRData, trait_name=trait_name)}
-  }else {
-    warning("keyssh不正确,请联系管理员微信SFM19950928或DKYXS666获取密钥")
-  }
 }
 # parameters for plot
 genemove = 0.01; txt=1.1;  cex =1.3; lab=1.1; axis=1; top_cex=1.2;

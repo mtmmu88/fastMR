@@ -8,8 +8,6 @@
 gut_pre<-function (inputfile, savefile, exp_or_out = T, P_exp = 1e-05,
                    P_out = 5e-08)
 {library(tidyr)
-  if (RegistID_u$FINN %in% tempid) {
-    library(tidyr)
     file <- dir(inputfile) %>% data.frame()
     for (i in 1:nrow(file)) {
       dir.create(savefile)
@@ -49,7 +47,5 @@ gut_pre<-function (inputfile, savefile, exp_or_out = T, P_exp = 1e-05,
         cat("已完成结果数据转化", pv, "%")
       }
     }
-  }else {
-    warning("keyssh不正确,请联系管理员微信SFM19950928或DKYXS666获取密钥")
   }
 }

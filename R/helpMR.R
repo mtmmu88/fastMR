@@ -1,43 +1,37 @@
-#' @title 获取安装标准MR分析的密钥
-#' @param Yourname 输入您的用户名
+#' @title 获取MiraMR包的帮助信息
+#' @description 显示MiraMR包的基本使用指南和主要函数说明
 #' @export
-helpMR<-function(Yourname=NULL){
-  if(class(Yourname)!="NULL"){
-  if(!require("keyring",quietly=T))
-    result1 <-try(install.packages("keyring"))
-  if(!require("blastula",quietly=T))
-    result2 <-try(install.packages("blastula"))
-  if(!require("rmarkdown",quietly=T))
-    result3 <- try(install.packages("rmarkdown"))
-  result4 <-try(library(keyring))
-  result5 <-try(library(blastula))
-  result6 <-try(library(rmarkdown))
-  #if(!require("sofmClump",quietly=T))
-    #try(devtools::install_github("shaoming1995/sofmClump"))
-  #if(!require("sofmstandMR",quietly=T))
-  #devtools::install_github("shaoming1995/sofmstandMR")
-  id_temp<-paste0(round(runif(1,min = 1,max = 100000),0))
-  result7 <-try(create_smtp_creds_key(
-    id = id_temp,
-    user = "sofm_teacher@163.com",
-    host = "smtp.163.com",
-    port = 25,
-    use_ssl = T))
-  subject = "please usering sofmClump"
-  from <- "sofm_teacher@163.com"
-  to <- "shaoming0928@stu.njmu.edu.cn"
-  email <-compose_email(body = md(paste0(Yourname,"的密钥是",Sys.info()["nodename"])))
-  smtp_send(
-    from = from,
-    to = to,
-    subject =subject,
-    email = email,
-    credentials = creds_key(id = id_temp)
-  )}else{message("必须输入DK开头的用户名才可以激活安装
-抖音ID：793742981（医小研）
-微信:SFM19950928
-感谢您的使用,我们会不断为您提供优质的R包服务
-")}
+helpMR <- function(){
+  cat("========================================\n")
+  cat("  MiraMR - 孟德尔随机化分析工具包\n")
+  cat("========================================\n\n")
+  cat("主要功能模块:\n\n")
+  cat("1. 标准单变量MR分析:\n")
+  cat("   - stand_UVMR_local_local: 暴露和结局均为本地数据\n")
+  cat("   - stand_UVMR_local_IEU: 暴露为本地数据，结局为IEU数据\n")
+  cat("   - stand_UVMR_IEU_local: 暴露为IEU数据，结局为本地数据\n")
+  cat("   - stand_UVMR_IEU_IEU: 暴露和结局均为IEU数据\n\n")
+  cat("2. 标准多变量MR分析:\n")
+  cat("   - stand_MVMR_local_local: 暴露和结局均为本地数据\n")
+  cat("   - stand_MVMR_local_IEU: 暴露为本地数据，结局为IEU数据\n")
+  cat("   - stand_MVMR_IEU_local: 暴露为IEU数据，结局为本地数据\n")
+  cat("   - stand_MVMR_IEU_IEU: 暴露和结局均为IEU数据\n\n")
+  cat("3. 数据预处理函数:\n")
+  cat("   - infla_factor_pre: 炎症因子数据预处理 (91个因子)\n")
+  cat("   - inmm_cell_pre: 免疫细胞数据预处理 (731种细胞)\n")
+  cat("   - metb_pre: 代谢组学数据预处理 (1400种代谢物)\n")
+  cat("   - gut_pre: 肠道菌群数据预处理 (211个菌群)\n\n")
+  cat("4. 其他分析:\n")
+  cat("   - SMR_qtl_GWAS: SMR分析\n")
+  cat("   - GWAS_meta: GWAS meta分析\n")
+  cat("   - PLACO_trait: 多效性分析\n")
+  cat("   - Omic_local / local_Omic: 组学数据MR分析\n\n")
+  cat("使用说明:\n")
+  cat("- 本包仅供学术研究和教育使用\n")
+  cat("- 不得用于未经授权的商业用途\n")
+  cat("- 更多信息请查看各函数的帮助文档: ?function_name\n\n")
+  cat("联系方式: mtmmu88@gmail.com\n")
+  cat("========================================\n")
 }
 
 
