@@ -1,0 +1,51 @@
+Package: MiraMR
+Title: Mira's Mendelian Randomization Toolkit
+Version: 1.0.0
+Authors@R:
+    person("Mira's Father", "Developer", email = "mtmmu88@gmail.com",
+           role = c("aut", "cre"),
+           comment = "Dedicated to my daughter Mira")
+Description: A comprehensive Mendelian Randomization (MR) analysis toolkit
+    designed for academic research and educational purposes. Provides intuitive
+    functions for univariate and multivariate MR analysis, Summary-based MR (SMR),
+    omics data integration (inflammatory factors, immune cells, metabolomics,
+    gut microbiome), GWAS meta-analysis, and pleiotropic analysis. All functions
+    use the 'mira_' prefix for easy discovery and to honor the package's namesake.
+    For academic use only - not for unauthorized commercial purposes.
+License: GPL-3
+URL: https://github.com/mtmmu88/MiraMR
+BugReports: https://github.com/mtmmu88/MiraMR/issues
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Depends:
+    R (>= 3.5.0)
+Imports:
+    TwoSampleMR,
+    MendelianRandomization,
+    MRPRESSO,
+    ieugwasr,
+    dplyr,
+    tidyr,
+    data.table,
+    sqldf,
+    ggplot2,
+    GenomicSEM,
+    forestploter,
+    R.utils,
+    grid,
+    stringr,
+    digest,
+    jsonlite,
+    openssl
+Suggests:
+    devtools,
+    roxygen2,
+    knitr,
+    rmarkdown,
+    GenomicRanges,
+    BSgenome,
+    SNPlocs.Hsapiens.dbSNP155.GRCh37,
+    SNPlocs.Hsapiens.dbSNP155.GRCh38
+VignetteBuilder: knitr
