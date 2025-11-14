@@ -67,6 +67,13 @@ export(mira_trans_eaf)
 export(mira_trans_z)
 export(mira_format_smr)
 
+# License management
+export(mira_get_machine_id)
+export(mira_activate)
+export(mira_license_status)
+export(mira_deactivate)
+export(mira_generate_license)
+
 # Package help
 export(mira_help)
 export(mira_update)

@@ -41,3 +41,9 @@ ldsc_data/
 *.sumstats
 *.sumstats.gz
 *_ldsc.log
+
+# License management (CONFIDENTIAL - DO NOT COMMIT)
+admin_license_generator.R
+license_tracking.csv
+licenses_batch_*.csv
+license_*.txt

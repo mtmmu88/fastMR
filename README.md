@@ -19,13 +19,13 @@ MiraMR provides an intuitive and powerful toolkit for conducting Mendelian Rando
 - ✅ **Advanced Methods**: SMR, GWAS meta-analysis, and pleiotropic analysis (PLACO)
 - ✅ **Visualization**: Automated generation of scatter plots, forest plots, funnel plots, and leave-one-out plots
 - ✅ **User-Friendly**: Consistent naming convention and comprehensive documentation
-- ✅ **No Licensing Restrictions**: Free for academic use under GPL-3
+- ✅ **Licensed for Academic Use**: Controlled access with machine-bound licenses
 
 ---
 
-## 📦 Installation
+## 📦 Installation & Activation
 
-### From GitHub
+### Step 1: Install from GitHub
 
 ```r
 # Install devtools if you haven't already
@@ -35,10 +35,39 @@ install.packages("devtools")
 devtools::install_github("mtmmu88/MiraMR")
 ```
 
-### From Local Source
+### Step 2: Get Machine ID
 
 ```r
-devtools::install("/path/to/MiraMR")
+# Get your unique machine ID
+MiraMR::mira_get_machine_id()
+```
+
+### Step 3: Request License
+
+Email the following to **mtmmu88@gmail.com**:
+- Your name
+- Your email address
+- Your affiliation/institution
+- Your machine ID (from Step 2)
+- Brief description of your research
+
+### Step 4: Activate License
+
+Once you receive your license key via email:
+
+```r
+# Activate your license
+MiraMR::mira_activate("your_license_key_here")
+```
+
+### Step 5: Start Using MiraMR
+
+```r
+# Load the package
+library(MiraMR)
+
+# Check your license status
+mira_license_status()
 ```
 
 ---
@@ -291,11 +320,39 @@ mira_ldsc(
 
 ---
 
-## 📄 License
+## 📄 License & Access
 
-This package is licensed under the **GPL-3 License**.
+MiraMR is released under the **GPL-3 License** for academic research and educational purposes.
 
-**For Academic Use Only** - Not for unauthorized commercial purposes.
+### License Requirements
+
+- **Machine-Bound**: Each license is bound to a specific computer
+- **Time-Limited**: Licenses have expiration dates (typically 1 year)
+- **Academic Use**: For research and educational purposes only
+- **No Commercial Use**: Not for unauthorized commercial purposes
+
+### Obtaining a License
+
+1. Install the package from GitHub
+2. Run `MiraMR::mira_get_machine_id()` to get your machine ID
+3. Email mtmmu88@gmail.com with:
+   - Your name and affiliation
+   - Your machine ID
+   - Brief description of your research
+4. Receive license key via email
+5. Activate with `MiraMR::mira_activate("your_key")`
+
+### License Management
+
+```r
+# Check license status
+MiraMR::mira_license_status()
+
+# Deactivate (before switching machines)
+MiraMR::mira_deactivate()
+```
+
+For detailed documentation, see `LICENSE_SYSTEM_README.md`.
 
 ---
 
