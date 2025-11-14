@@ -22,7 +22,7 @@
       } else if(license_data$machine_id != current_machine_id) {
         license_msg <- "  \033[33mWARNING: License is for a different machine\033[0m\n"
       } else {
-        license_msg <- "  \033[33mWARNING: License expired on ", license_data$expiry_date, "\033[0m\n"
+        license_msg <- paste0("  \033[33mWARNING: License expired on ", license_data$expiry_date, "\033[0m\n")
       }
     }, error = function(e) {
       license_msg <<- "  \033[33mWARNING: License file is corrupted\033[0m\n"
